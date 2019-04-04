@@ -1,0 +1,129 @@
+﻿
+@{
+    Layout = "";
+    ViewBag.Title = "TestjQuery";
+}
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+<h2>TestjQuery</h2>
+<script type="text/javascript">
+    $("document").ready(function () {
+        ////basic selector
+        //$("p").css("border", "3px solid red");
+        //$(".a").css("border", "3px solid red");
+        //$("p.b").css("border", "3px solid red");
+
+        ////advans selector
+        //$("p, li.b").css("border", "3px solid red");
+        //$("ul li.a").css("border", "3px solid red");
+        //$("ul + p").css("border", "3px solid red");
+        //$("ul ~ p").css("border", "3px solid red");
+
+        ////filter
+        //$("p:first").css("border", "3px solid red");
+        //$("p:last").css("border", "3px solid red");
+        //$("li:even").css("border", "3px solid red");
+        //$(".b:even").css("border", "3px solid red");
+        //$("p:gt(1)").css("border", "3px solid red");
+        //$("p:not(p:eq(2))").css("border", "3px solid red");
+
+        ////Attribute filters
+        //$("p[class]").css("border", "3px solid red");
+        //$("p[id=para1]").css("border", "3px solid red");
+        //$("p[id^=para]").css("border", "3px solid red");
+        //$("p[id^=para][lang*=en-]").css("border", "3px solid red");
+        //$("p[id$=4]").css("border", "3px solid red");
+
+        ////child visibility & content filters
+        //$("p:contains(3)").css("border", "3px solid red");
+        //$("p:parent").css("border", "3px solid red");
+        //$("ul:has(li[class=a])").css("border", "3px solid red");
+        //$("ul li:nth-child(3)").css("border", "3px solid red");
+        //$("ul li:nth-child(2n)").css("border", "3px solid red");
+        
+        ////////////////////////// traversing ////////////////////////////////////
+       
+        //alert("There are " + $("p").length + " <p> elements");
+
+        //var elems = $("li").get();
+        //alert("There are " + elems.length + " <li> tags");
+        //alert($("li").get(0));
+
+        //$("ul").find("li.b").css("border", "3px solid red");
+
+        //var leftmargin = 0;
+        //var border = 3;
+        //$("p").each(function () {
+        //    $(this).css("border", border + "px solid red");
+        //    $(this).css("margin-left", leftmargin);
+        //    border += 2;
+        //    leftmargin += 10;
+        //});
+
+        /////////////////////// pdf icon //////////////////
+
+        //$("li a[href$='.pdf']").after("<img src='/Content/image/small_pdf_icon.gif' align='absbottom' />");
+
+        /////////////////// seting content /////////////
+
+        //alert($("#list1").html());
+        //$("#list1").html("<li> new item</li>");
+        //var newitem = $("<p> This is a new paragraph</p>");
+        //$("#para2").html(newitem.html())
+        //$("#para2").html("<p> This is a ttttttttt</p>")
+
+        //$("p:last").text("this ggggggggggg ");
+
+        //////////////////// inserting/////////////
+        //$("p").append("helooooooooo");
+        //$("p").prepend("bayyyyyyyyyyyy")
+        //$("p:last").prependTo("p:first");
+        ///////////// Wrapping ///////
+        //$("p").wrap("<div style='color:red' />'")
+        //$("p").wrapAll("<div style='border:3px soild red'/>");
+        //$("ul").empty();
+
+        /////////////
+
+        
+
+    });
+</script>
+
+<head>
+<style type="text/css">
+    .a {
+        color: Navy;
+    }
+
+    .b {
+        color: Maroon;
+    }
+</style>
+</head>
+<body>
+    <ul id="list1">
+        <li class="a">item 1</li>
+        <li class="a">item 2</li>
+        <li class="b">item 3</li>
+        <li class="b">item 4</li>
+    </ul>
+    <p class="a">This is paragraph 1</p>
+    <p id="para2">This is paragraph 2</p>
+    <p class="b">This is paragraph 3</p>
+    <p id="para4" lang="en-us">This is paragraph 4</p>
+
+    <ul class="navlist" id="navlinks">
+        <li><a href="someurl.html">Link #1</a></li>
+        <li><a name="#anchor1">Named Anchor Link</a></li>
+        <li><a href="someurl.html">Link #2</a></li>
+        <li><a href="someurl.pdf">Link #3</a></li>
+        <li><a href="someurl.html">Link #4</a></li>
+        <li><a href="someurl.html">Link #5</a></li>
+        <li><a href="someurl.pdf">Link #6</a></li>
+        <li><a href="someurl.html">Link #7</a></li>
+        <li><a href="mailto:amir@amir.com">Email Link</a></li>
+    </ul>
+</body>
+
+

@@ -1,0 +1,170 @@
+﻿
+@{
+    Layout = "";
+
+}
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+
+<head>
+    <title>Document</title>
+    <script type="text/javascript" src="../jquery-1.9.1.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            // Older versions of jQuery used the "bind" and "unbind" functions
+            //$("#evtTarget").bind("mouseover mouseleave", highlight);
+
+            //$("#evtTarget").bind("click", function(evt) {
+            //    $("#evtTarget").unbind("mouseover mouseleave", highlight);
+            //    $("#evtTarget").html("<p>You shut off the hover effect!</p>");
+            //});
+
+            // jQuery as of 1.7 provides the universal "on" and "off" functions
+            //$("#evtTarget").on("mouseover mouseleave", highlight);
+            //$("#evtTarget").on("click", function(evt) {
+            //    $("#evtTarget").off("mouseover mouseleave", highlight);
+            //    $("#evtTarget").html("<p>You shut off the hover effect!</p>");
+            //});
+
+            //$(function () {
+            //    $("#evtTarget").hover(highlight);
+
+            //    $("#evtTarget").toggle(fnClick1, fnClick2)
+
+            //    //$("#evtTarget").click(fnClick1);
+            //    //$("#evtTarget").dblclick(fnClick2);
+            //});
+
+            //function highlight(evt) {
+            //    $("#evtTarget").toggleClass("highlighted");
+            //}
+            ////function fnClick1() {
+            ////    $("#evtTarget").html("Click!");
+            ////}
+            ////function fnClick2() {
+            ////    $("#evtTarget").html("Double Click!");
+            ////}
+
+            //$("div").click(function (evt) {
+            //    $(this).html("pageX: " + evt.pageX + ", pageY: " + evt.pageY + ", type: " + evt.type + ", target: " +
+            //    evt.target);
+            //});
+
+            /////////////////////////////
+
+            $("#show").click(function () {
+                $("#theDiv").show("normal");
+            });
+            $("#hide").click(function () {
+                $("#theDiv").hide("normal");
+            });
+            $("#toggle").click(function () {
+                $("#theDiv").toggle("slow");
+            });
+
+
+            /////////////////////////////////////////////////
+
+
+            $("#fadein").click(function () {
+                $("#theDiv").fadeIn("normal");
+            });
+            $("#fadeout").click(function () {
+                $("#theDiv").fadeOut("normal");
+            });
+            $("#fadeto3").click(function () {
+                $("#theDiv").fadeTo("slow", 0.3);
+            });
+            $("#fadeup").click(function () {
+                $("#theDiv").fadeTo("slow", 1.0);
+            });
+
+            ////////////////
+
+            $("#slideup").click(function () {
+                $("#theDiv").slideUp("normal");
+            });
+            $("#slidedown").click(function () {
+                $("#theDiv").slideDown("normal");
+            });
+            $("#toggle3").click(function () {
+                $("#theDiv").slideToggle("slow");
+            });
+
+            ///////////
+
+            $("#right").click(function () {
+                $("#theDiv").animate({ width: "500px" }, 1000);
+            });
+            $("#text").click(function () {
+                $("#theDiv").animate({ fontSize: "24pt" }, 1000);
+            });
+            $("#toggle4").click(function () {
+                $("#theDiv").animate({  left: "500" }, 1000, "swing");
+            });
+         
+        });
+
+
+
+
+    </script>
+    <style type='text/css'>
+        .normal {
+            width: 300px;
+            height: 200px;
+            background-color: Yellow;
+            font-size: 18pt;
+        }
+
+        .highlighted {
+            background-color: Red;
+        }
+        /* //////////////////       */
+        div#theDiv {
+            width: 250px;
+            height: 180px;
+            margin: 10px;
+            padding: 20px;
+            background: blue;
+            border: 2px solid black;
+            cursor: pointer;
+        }
+
+        p, span {
+            font-size: 16pt;
+        }
+
+        button {
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Binding and Unbinding Events Example</h1>
+    <div id="evtTarget" class="normal">Mouse over this div to see the er.</div>
+    <p>
+        Fading an Element
+    </p>
+    <div id="theDiv">Animnnnnnnne</div>
+    </div>
+    <button id="show">Show</button>
+    <button id="hide">Hide</button>
+    <button id="toggle">Toggle</button>
+
+    <br />
+
+    <button id="fadein">Fade In</button>
+    <button id="fadeout">Fade Out</button>
+    <button id="fadeto3">Fade To .3</button>
+    <button id="fadeup">Fade To 1.0</button>
+
+    <br />
+    <button id="slideup">Slide Up</button>
+    <button id="slidedown">Slide Down</button>
+    <button id="toggle3">Toggle Slide</button>
+    <br />
+    <button id="right">Grow Right</button>
+    <button id="text">Big Text</button>
+    <button id="toggle4">Move Div</button>
+</body>

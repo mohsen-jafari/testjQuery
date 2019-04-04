@@ -1,0 +1,40 @@
+﻿@using WebMobile.Models.db
+@using WebMobile.ViewModel
+@model List<MobileViewModel>
+@{
+    Layout = "";
+   /// List<Mobile> Mobile = (List<Mobile>)ViewBag.MobileModel;
+}
+<link href="~/Content/MobileSite.css" rel="stylesheet" />
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Brand Name</th>
+        <th>Otg</th>
+        <th>Weight</th>
+        <th>ProductionDate</th>
+        
+    </tr>
+
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Name</td>
+            <td>@item.BrandName</td>
+            <td>@item.Otg</td>
+            <td>@item.Weight</td>
+            <td>@item.ProductionDate</td>
+           
+        </tr>
+    }
+
+    
+    
+</table>
+
+
+
+
+

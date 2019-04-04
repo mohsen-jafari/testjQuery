@@ -1,0 +1,17 @@
+﻿
+table {
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #000000;
+    text-align: center;
+    padding: 10px;
+}
+
+tr:nth-child(odd) {
+    background-color: #00ffff;
+}
+
+
+

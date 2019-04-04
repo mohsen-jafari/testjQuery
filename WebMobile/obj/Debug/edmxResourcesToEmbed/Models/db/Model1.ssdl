@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MobileSystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Brand">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="BrandName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Image">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ImageAddress" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Mobile">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BrandId" Type="int" Nullable="false" />
+    <Property Name="ProductionDate" Type="datetime" />
+    <Property Name="Weight" Type="int" />
+    <Property Name="Otg" Type="bit" />
+    <Property Name="UserId" Type="int" />
+  </EntityType>
+  <EntityType Name="MobileImage">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ImageId" Type="int" />
+    <Property Name="MobileId" Type="int" />
+  </EntityType>
+  <EntityType Name="Network">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="NetworkType" Type="nchar" MaxLength="2" />
+  </EntityType>
+  <EntityType Name="NetworkMobile">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Mobile_Id" Type="int" />
+    <Property Name="Network_Id" Type="int" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+    <Property Name="BirthDate" Type="datetime" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" />
+    <Property Name="RegisteryDate" Type="datetime" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Mobile_Brand">
+    <End Role="Brand" Type="Self.Brand" Multiplicity="1" />
+    <End Role="Mobile" Type="Self.Mobile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Brand">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Mobile">
+        <PropertyRef Name="BrandId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Mobile_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Mobile" Type="Self.Mobile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Mobile">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MobileImage_image">
+    <End Role="Image" Type="Self.Image" Multiplicity="0..1" />
+    <End Role="MobileImage" Type="Self.MobileImage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Image">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MobileImage">
+        <PropertyRef Name="ImageId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MobileImage_Mobile">
+    <End Role="Mobile" Type="Self.Mobile" Multiplicity="0..1" />
+    <End Role="MobileImage" Type="Self.MobileImage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Mobile">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MobileImage">
+        <PropertyRef Name="MobileId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Network_Mobile">
+    <End Role="Mobile" Type="Self.Mobile" Multiplicity="0..1" />
+    <End Role="NetworkMobile" Type="Self.NetworkMobile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Mobile">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="NetworkMobile">
+        <PropertyRef Name="Mobile_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Network_NetworksType">
+    <End Role="Network" Type="Self.Network" Multiplicity="0..1" />
+    <End Role="NetworkMobile" Type="Self.NetworkMobile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Network">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="NetworkMobile">
+        <PropertyRef Name="Network_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MobileSystemModelStoreContainer">
+    <EntitySet Name="Brand" EntityType="Self.Brand" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Image" EntityType="Self.Image" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Mobile" EntityType="Self.Mobile" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MobileImage" EntityType="Self.MobileImage" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Network" EntityType="Self.Network" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NetworkMobile" EntityType="Self.NetworkMobile" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Mobile_Brand" Association="Self.FK_Mobile_Brand">
+      <End Role="Brand" EntitySet="Brand" />
+      <End Role="Mobile" EntitySet="Mobile" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Mobile_User" Association="Self.FK_Mobile_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Mobile" EntitySet="Mobile" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MobileImage_image" Association="Self.FK_MobileImage_image">
+      <End Role="Image" EntitySet="Image" />
+      <End Role="MobileImage" EntitySet="MobileImage" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MobileImage_Mobile" Association="Self.FK_MobileImage_Mobile">
+      <End Role="Mobile" EntitySet="Mobile" />
+      <End Role="MobileImage" EntitySet="MobileImage" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Network_Mobile" Association="Self.FK_Network_Mobile">
+      <End Role="Mobile" EntitySet="Mobile" />
+      <End Role="NetworkMobile" EntitySet="NetworkMobile" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Network_NetworksType" Association="Self.FK_Network_NetworksType">
+      <End Role="Network" EntitySet="Network" />
+      <End Role="NetworkMobile" EntitySet="NetworkMobile" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

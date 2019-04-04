@@ -1,0 +1,69 @@
+﻿@using WebMobile.Models.db
+@using WebMobile.ViewModel
+@using WebMobile.Tools
+
+@model MobileViewModel
+@{
+    Layout = "";
+    List<BrandViewModel> Brand = (List<BrandViewModel>)ViewBag.brand;
+    
+}
+
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<link href="~/Content/MobileForm.css" rel="stylesheet" />
+
+<div>
+    <div id="a" style="padding:60px; background-color:aqua"> Hello Jquery </div>
+    <form action="/MobilePage/MobileRegister" method="post">
+        Mobile name: <br />
+        <input type="text" name="Name" value="@Model.Name">
+        <br />
+        ProductionDate: <br>
+        <input type="date" name="ProductionDate" value="@Model.DateText">
+        <br />
+        brand: <br>
+        <select name="BrandId">
+            @foreach (var item in Brand)
+            {
+                if (item.Id != Model.BrandId )
+                {
+                    <option value="@item.Id" >@item.BrandName</option>
+                }
+                else
+                {
+                    <option value="@item.Id" selected>@item.BrandName</option>
+                }
+            }
+        </select>
+        <br />
+        Weight: <br>
+        <input type="number" name="Weight" value="@Model.Weight">
+        <br />
+        Otg: 
+        <input class="ChecK" type="checkbox" checked="checked" value="True" name="Otg">
+        <br /><br />
+        <input type="submit" value="Submit">
+        <input type="button" value="Juqery Tester" />
+    </form>
+</div>
+
+<script>
+    $("#a").click(function () {
+
+        $("#a").css("background-color", "red");
+        $("#a").css("padding", "80px");
+        $("#a").animate({
+            padding: "250px",
+            opacity: '0.5',
+            height: '150px',
+            width: '150px'
+        }, 10000);
+
+        var ttt = $("#a").text();
+
+
+      //  alert(ttt);
+
+    })
+</script>
