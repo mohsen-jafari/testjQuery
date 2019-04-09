@@ -62,6 +62,9 @@
     <Property Name="RegisteryDate" Type="datetime" />
     <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsAdmin" Type="bit" />
+    <Property Name="Education" Type="tinyint" />
+    <Property Name="Country" Type="smallint" />
   </EntityType>
   <Association Name="FK_Mobile_Brand">
     <End Role="Brand" Type="Self.Brand" Multiplicity="1" />

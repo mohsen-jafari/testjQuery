@@ -173,6 +173,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MobilePageController.cs" />
+    <Compile Include="Enum\CountryEnum.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -216,11 +217,14 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MobileModels.cs" />
+    <Compile Include="Models\UserModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Tools\DateTimeConvert.cs" />
     <Compile Include="ViewModel\BrandViewModel.cs" />
+    <Compile Include="ViewModel\Country.cs" />
     <Compile Include="ViewModel\MobileViewModel.cs" />
+    <Compile Include="ViewModel\UserViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -228,9 +232,19 @@
     <Content Include="Content\image\Grass.jpg" />
     <Content Include="Content\image\Leaf.jpg" />
     <Content Include="Content\image\Spring.jpg" />
+    <Content Include="Content\images\ui-icons_444444_256x240.png" />
+    <Content Include="Content\images\ui-icons_555555_256x240.png" />
+    <Content Include="Content\images\ui-icons_777620_256x240.png" />
+    <Content Include="Content\images\ui-icons_777777_256x240.png" />
+    <Content Include="Content\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Content\images\ui-icons_ffffff_256x240.png" />
     <Content Include="Content\image\Water.jpg" />
+    <Content Include="Content\jquery-ui-1.10.4.custom.css" />
+    <Content Include="Content\LayoutMeno.css" />
     <Content Include="Content\MobileForm.css" />
     <Content Include="Content\MobileSite.css" />
+    <Content Include="Content\superfish.css" />
+    <Content Include="Content\UserStyle.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -255,10 +269,15 @@
     <Content Include="Models\db\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
+    <Content Include="fonts\BNaznnBd.woff" />
+    <Content Include="fonts\BNaznnBd.woff2" />
+    <Content Include="fonts\BNaznnBd.ttf" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\hoverIntent.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui-1.10.4.custom.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -266,6 +285,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\superfish.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -303,10 +323,14 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\MobilePage\Index.cshtml" />
     <Content Include="Views\MobilePage\Mobiles.cshtml" />
-    <Content Include="Views\MobilePage\MobileRegister.cshtml" />
+    <Content Include="Views\MobilePage\MobileRegister.cshtml">
+      <BrowseToURL>~/MobilePage/</BrowseToURL>
+    </Content>
     <Content Include="Views\MobilePage\TestjQuery.cshtml" />
     <Content Include="Views\MobilePage\TestjQuery2.cshtml" />
     <Content Include="Views\MobilePage\jQueryManipulating.cshtml" />
+    <Content Include="Views\MobilePage\jQueryW3.cshtml" />
+    <Content Include="Views\MobilePage\UserRegister.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

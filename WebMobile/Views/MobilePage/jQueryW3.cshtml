@@ -1,0 +1,89 @@
+﻿
+@{
+    Layout = "";
+    ViewBag.Title = "jQueryW3";
+}
+
+
+
+<head>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+
+
+    <script>
+        $(document).ready(function () {
+
+            $(".but2").click(function () {
+                $("#test").hide();
+            });
+
+
+            $("#but3").click(function () {
+                $("p").css("border", "3px solid red ");
+            });
+
+            $("#but4").click(function () {
+                $(this).hide();
+            });
+            $("#but5").click(function () {
+                $("p.but").hide();
+            });
+            $("#but6").click(function () {
+                $("ul li:first").css("border", "5px solid red ");
+            });
+
+            $("#but7").clik(function () {
+                $("a[ta")
+            });
+
+        });
+
+    </script>
+
+    <style>
+
+        .style1 {
+            margin: 100px;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="style1"  >
+
+        <h2>محسن</h2>
+        <p>پارگراف خالی</p>
+        <p id="test">پارگراف با id تست</p>
+        <p class="test">پارگراف با کلاس </p>
+
+        <p>List 1</p>
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+
+        <p>List 2</p>
+        <ul>
+            <li>21</li>
+            <li>22</li>
+            <li>23</li>
+        </ul>
+
+        <p><a href="http://www.google.com" target="_blank">google</a></p>
+        <p><a href="http://www.bing.com">bing</a></p>
+
+        <button>Click </button>
+        <button class="but2">Click class</button>
+        <button id="but3">Click id</button>
+        <button id="but4"> this</button>
+        <button id="but5"> this</button>
+        <button id="but6"> list</button>
+        <button id="but7"> link </button>
+    </div>
+
+
+</body>

@@ -10,14 +10,14 @@
         <EntityTypeShape EntityType="MobileSystemModel.MobileImage" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="MobileSystemModel.Network" Width="1.5" PointX="3" PointY="7.125" IsExpanded="true" />
         <EntityTypeShape EntityType="MobileSystemModel.NetworkMobile" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MobileSystemModel.User" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
         <AssociationConnector Association="MobileSystemModel.FK_MobileImage_image" ManuallyRouted="false" />
-        <AssociationConnector Association="MobileSystemModel.FK_Mobile_User" ManuallyRouted="false" />
         <AssociationConnector Association="MobileSystemModel.FK_MobileImage_Mobile" ManuallyRouted="false" />
         <AssociationConnector Association="MobileSystemModel.FK_Network_Mobile" ManuallyRouted="false" />
         <AssociationConnector Association="MobileSystemModel.FK_Network_NetworksType" ManuallyRouted="false" />
         <EntityTypeShape EntityType="MobileSystemModel.Brand" Width="1.5" PointX="0.5" PointY="3.125" />
         <AssociationConnector Association="MobileSystemModel.FK_Mobile_Brand" />
+        <EntityTypeShape EntityType="MobileSystemModel.User" Width="1.5" PointX="0.75" PointY="6.625" />
+        <AssociationConnector Association="MobileSystemModel.FK_Mobile_User" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

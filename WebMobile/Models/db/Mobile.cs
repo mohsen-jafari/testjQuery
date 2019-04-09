@@ -29,11 +29,11 @@ namespace WebMobile.Models.db
         public Nullable<bool> Otg { get; set; }
         public Nullable<int> UserId { get; set; }
     
-        public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MobileImage> MobileImages { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NetworkMobile> NetworkMobiles { get; set; }
         public virtual Brand Brand { get; set; }
+        public virtual User User { get; set; }
     }
 }

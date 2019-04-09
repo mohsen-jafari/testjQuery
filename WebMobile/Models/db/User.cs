@@ -29,6 +29,9 @@ namespace WebMobile.Models.db
         public Nullable<System.DateTime> RegisteryDate { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
+        public Nullable<bool> IsAdmin { get; set; }
+        public Nullable<byte> Education { get; set; }
+        public Nullable<short> Country { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Mobile> Mobiles { get; set; }

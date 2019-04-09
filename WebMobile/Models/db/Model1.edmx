@@ -67,6 +67,9 @@
           <Property Name="RegisteryDate" Type="datetime" />
           <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsAdmin" Type="bit" />
+          <Property Name="Education" Type="tinyint" />
+          <Property Name="Country" Type="smallint" />
         </EntityType>
         <Association Name="FK_Mobile_Brand">
           <End Role="Brand" Type="Self.Brand" Multiplicity="1" />
@@ -196,10 +199,10 @@
           <Property Name="Weight" Type="Int32" />
           <Property Name="Otg" Type="Boolean" />
           <Property Name="UserId" Type="Int32" />
-          <NavigationProperty Name="User" Relationship="Self.FK_Mobile_User" FromRole="Mobile" ToRole="User" />
           <NavigationProperty Name="MobileImages" Relationship="Self.FK_MobileImage_Mobile" FromRole="Mobile" ToRole="MobileImage" />
           <NavigationProperty Name="NetworkMobiles" Relationship="Self.FK_Network_Mobile" FromRole="Mobile" ToRole="NetworkMobile" />
           <NavigationProperty Name="Brand" Relationship="MobileSystemModel.FK_Mobile_Brand" FromRole="Mobile" ToRole="Brand" />
+          <NavigationProperty Name="User" Relationship="MobileSystemModel.FK_Mobile_User" FromRole="Mobile" ToRole="User" />
         </EntityType>
         <EntityType Name="MobileImage">
           <Key>
@@ -229,21 +232,6 @@
           <NavigationProperty Name="Mobile" Relationship="Self.FK_Network_Mobile" FromRole="NetworkMobile" ToRole="Mobile" />
           <NavigationProperty Name="Network" Relationship="Self.FK_Network_NetworksType" FromRole="NetworkMobile" ToRole="Network" />
         </EntityType>
-        <EntityType Name="User">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="BirthDate" Type="DateTime" Precision="3" />
-          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="RegisteryDate" Type="DateTime" Precision="3" />
-          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Mobiles" Relationship="Self.FK_Mobile_User" FromRole="User" ToRole="Mobile" />
-        </EntityType>
         <Association Name="FK_MobileImage_image">
           <End Role="Image" Type="Self.Image" Multiplicity="0..1" />
           <End Role="MobileImage" Type="Self.MobileImage" Multiplicity="*" />
@@ -253,18 +241,6 @@
             </Principal>
             <Dependent Role="MobileImage">
               <PropertyRef Name="ImageId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Mobile_User">
-          <End Role="User" Type="Self.User" Multiplicity="0..1" />
-          <End Role="Mobile" Type="Self.Mobile" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Mobile">
-              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -310,14 +286,9 @@
           <EntitySet Name="MobileImages" EntityType="Self.MobileImage" />
           <EntitySet Name="Networks" EntityType="Self.Network" />
           <EntitySet Name="NetworkMobiles" EntityType="Self.NetworkMobile" />
-          <EntitySet Name="Users" EntityType="Self.User" />
           <AssociationSet Name="FK_MobileImage_image" Association="Self.FK_MobileImage_image">
             <End Role="Image" EntitySet="Images" />
             <End Role="MobileImage" EntitySet="MobileImages" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Mobile_User" Association="Self.FK_Mobile_User">
-            <End Role="User" EntitySet="Users" />
-            <End Role="Mobile" EntitySet="Mobiles" />
           </AssociationSet>
           <AssociationSet Name="FK_MobileImage_Mobile" Association="Self.FK_MobileImage_Mobile">
             <End Role="Mobile" EntitySet="Mobiles" />
@@ -334,6 +305,11 @@
           <EntitySet Name="Brands" EntityType="MobileSystemModel.Brand" />
           <AssociationSet Name="FK_Mobile_Brand" Association="MobileSystemModel.FK_Mobile_Brand">
             <End Role="Brand" EntitySet="Brands" />
+            <End Role="Mobile" EntitySet="Mobiles" />
+          </AssociationSet>
+          <EntitySet Name="Users" EntityType="MobileSystemModel.User" />
+          <AssociationSet Name="FK_Mobile_User" Association="MobileSystemModel.FK_Mobile_User">
+            <End Role="User" EntitySet="Users" />
             <End Role="Mobile" EntitySet="Mobiles" />
           </AssociationSet>
         </EntityContainer>
@@ -354,6 +330,36 @@
             </Principal>
             <Dependent Role="Mobile">
               <PropertyRef Name="BrandId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BirthDate" Type="DateTime" Precision="3" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RegisteryDate" Type="DateTime" Precision="3" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsAdmin" Type="Boolean" />
+          <Property Name="Education" Type="Byte" />
+          <Property Name="Country" Type="Int16" />
+          <NavigationProperty Name="Mobiles" Relationship="MobileSystemModel.FK_Mobile_User" FromRole="User" ToRole="Mobile" />
+        </EntityType>
+        <Association Name="FK_Mobile_User">
+          <End Type="MobileSystemModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="MobileSystemModel.Mobile" Role="Mobile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Mobile">
+              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -410,25 +416,28 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="MobileSystemModel.User">
-              <MappingFragment StoreEntitySet="User">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="RegisteryDate" ColumnName="RegisteryDate" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Brands">
             <EntityTypeMapping TypeName="MobileSystemModel.Brand">
               <MappingFragment StoreEntitySet="Brand">
                 <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="MobileSystemModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Education" ColumnName="Education" />
+                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="RegisteryDate" ColumnName="RegisteryDate" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

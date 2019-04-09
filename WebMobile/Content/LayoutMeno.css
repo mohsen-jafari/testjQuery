@@ -1,0 +1,10 @@
+﻿ul#menubody
+{
+    float:left;
+    width: 100%;
+    margin: 0px 20%;
+}
+.myfont 
+{
+    font-family: BNazanin,'BNazanin',tahoma;
+}

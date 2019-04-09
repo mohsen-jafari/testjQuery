@@ -30,7 +30,7 @@ namespace WebMobile.Models.db
         public virtual DbSet<MobileImage> MobileImages { get; set; }
         public virtual DbSet<Network> Networks { get; set; }
         public virtual DbSet<NetworkMobile> NetworkMobiles { get; set; }
-        public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Brand> Brands { get; set; }
+        public virtual DbSet<User> Users { get; set; }
     }
 }

@@ -1,0 +1,95 @@
+﻿body
+{
+     font-family:BNazanin;
+}
+
+
+div#inputform
+{
+    
+    margin: 20px 10%;
+    padding: 20px;
+    
+}
+input 
+{
+  width: 80%;
+  padding: 10px 0px;
+  margin: 10px 0px;
+  box-sizing: border-box;
+}
+
+div#bodyPage
+{
+     margin: 20% 20%;
+     padding: 10px;
+}
+ul#menubody
+{
+    float:left;
+    width: 100%;
+    margin: 0px 20%;
+}
+div#tabbody
+{
+    float:left;
+    width: 55%;
+    margin: 5px 5px;
+    padding: 4px;
+}
+div.accordionbody
+{
+    float:left;
+    width: 40%;
+    margin: 5px 5px;
+    padding: 4px;
+    direction:rtl;
+
+}
+.erorrMassege
+{
+    color:red;
+    margin: 0% 70px;
+    padding:10px;
+}
+
+button#btn 
+{
+  margin: 20px 10%;
+  padding: 20px;
+  background-color: #0094ff;
+  box-sizing: border-box;
+  width : 30%;
+  font-size: large;
+  color: white;
+}
+
+#Country
+{
+   width: 80%;
+  padding: 10px 0px;
+  margin: 10px 0px;
+  box-sizing: border-box;
+
+}
+
+label
+{
+     font-family:BNazanin;
+    float:left; 
+    margin:3px;
+     padding: 2px 2px;
+}
+checkbox
+{
+    float:left;
+    padding: 0px 0px;
+    margin: 10px 0px;
+}
+@font-face {
+  font-family: 'BNazanin';
+  src: 
+        url('../fonts/BNaznnBd.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+       url('../fonts/BNaznnBd.ttf') format('truetype');  /* Saf3—5, Chrome4+, FF3.5, Opera 10+ */
+}
+

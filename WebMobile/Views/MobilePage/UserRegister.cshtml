@@ -1,0 +1,263 @@
+﻿@using WebMobile.ViewModel
+
+@{
+    
+    var CountryList = (List<SelectListItem>)ViewBag.Country;
+}
+@model UserViewModel
+
+
+<link href="~/Content/UserStyle.css" rel="stylesheet" />
+<link href="~/Content/jquery-ui-1.10.4.custom.css" rel="stylesheet" />
+<link href="~/Content/superfish.css" rel="stylesheet" />
+
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery-ui-1.10.4.custom.js"></script>
+
+<script src="~/Scripts/hoverIntent.js"></script>
+<script src="~/Scripts/superfish.js"></script>
+
+
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>UserRegister</title>
+
+    <script>
+        $(document).ready(function () {
+            $("#tabs").tabs();
+
+
+            /////////////////////////// button //////////////
+
+            $("#btn").click(function () {
+                $("#dialog").dialog({});
+
+    
+                var textdialog = "UserName:" + $("#UserName").val() + " <br /> " +
+                                 "FirstName:" + $("#FirstName").val() + "<br />" +
+                                 "LastName:" + $("#LastName").val() + "<br />" +
+                                 "BirthDate:" + $("#BirthDate").val() + "<br />" +
+                                 "Phone:" + $("#Phone").val() + "<br />" +
+                                 "Email:" + $("#Email").val() + "<br />" +
+
+                                 "Is admin :" + $("#IsAdmin").val() + "<br />" +
+                                                
+                                 "Education :" + $("input[name='Education']:checked").parent('label').text() + "<br />" +
+
+                                 "Country :" + $("#Country option:selected").text();
+
+              
+
+                console.log("text dialog: " + textdialog);
+
+                $("p#Text2").html(textdialog)
+
+                debugger;
+            });
+
+            /////////////////////////////////////////////
+
+            $("[name='IsAdmin']").change(function () {
+                alert("change Is admin :" + $("#IsAdmin").val() );
+            });
+
+            $("[name='Education']").change(function () {
+                alert("change Education :" + $("[name='Education']:checked").parent('label').text()  );
+            });
+
+            $("[name='Country']").change(function () {
+                alert("change Country :" + $("#Country option:selected").text());
+            });
+
+
+            //$("input[name='Education']:checked").parent('label').text()
+
+            $("#accordion").accordion();
+
+            $(document).tooltip();
+
+            $('ul.sf-menu').superfish();
+
+        });
+    </script>
+
+</head>
+<body>
+
+
+
+
+    <div style="margin:0% 10%">
+
+
+        <div id="tabbody" style="font-family:BNazanin">>
+            <div id="tabs">
+                <ul>
+                    <li><a href="#tabs-1">Nunc tincidunt</a></li>
+                    <li><a href="#tabs-2">Proin dolor</a></li>
+                    <li><a href="#tabs-3">Aenean lacinia</a></li>
+                </ul>
+                <div id="tabs-1">
+
+
+
+                    <div id="inputform">
+                        <form action="/MobilePage/UserRegister" method="post">
+                            <span>UserName:</span> <br />
+                            @Html.TextBoxFor(x => x.UserName , new { @title = "نام کاربری" })
+                            @Html.ValidationMessageFor(x => x.UserName, "", new { @class = "erorrMassege" })
+                            <br />
+                            <span>Password:</span> <br />
+                            @Html.PasswordFor(x => x.Password , new { @title = "گذرواژه" })
+                            @Html.ValidationMessageFor(x => x.Password, "", new { @class = "erorrMassege" })
+                            <br />
+                            <span>FirstName:</span> <br />
+                            @Html.TextBoxFor(x => x.FirstName , new { @title = "نام ", value = "Jrrrrrrrrr" })
+                            @Html.ValidationMessageFor(x => x.FirstName, "", new { @class = "erorrMassege" })
+                            <br />
+                            <span>LastName:</span> <br />
+                            @Html.TextBoxFor(x => x.LastName, new { @title = "نام خانوادگی" })
+                            @Html.ValidationMessageFor(x => x.LastName, "", new { @class = "erorrMassege" })
+                            <br />
+                            <span>BirthDate:</span> <br />
+                            @Html.TextBoxFor(x => x.BirthDate, new { @type = "date" , @title = "تاریخ تولد" })
+                            @Html.ValidationMessageFor(x => x.BirthDate, "", new { @class = "erorrMassege" })
+                            <br />
+                            <span>Phone:</span> <br />
+                            @Html.TextBoxFor(x => x.Phone, new { @title = "شماره تماس" })
+                            @Html.ValidationMessageFor(x => x.Phone, "", new { @class = "erorrMassege" })
+                            <br />
+                            <span>Email:</span> <br />
+                            @Html.TextBoxFor(x => x.Email, new { @title = "ایمیل " })
+                            @Html.ValidationMessageFor(x => x.Email, "", new { @class = "erorrMassege" })
+                            <br />
+                            <span>Is Admin:</span> <br />
+                            @Html.CheckBoxFor(x => Model.IsAdmin , new { @title = " مدیر سایت " })
+
+                            <br />
+                            <span>Education:</span> <br />
+                            @*<span>:زیر دیپلم</span>*@       <label style="font-family:BNazanin"> @Html.RadioButtonFor(x => Model.Education,1,new {@id = "Education1" } )زیر دیپلم</label>
+                            @*<span>:دیپلم</span>*@          <label> @Html.RadioButtonFor(x => Model.Education, 2, new { @id = "Education2" }) دیپلم </label>
+                            @*<span>:کاردانی</span>*@         <label> @Html.RadioButtonFor(x => Model.Education, 3, new { @id = "Education3" }) کاردانی </label>
+                            @*<span>:کارشناسی</span>*@      <label> @Html.RadioButtonFor(x => Model.Education, 4, new { @id = "Education4" }) کارشناسی </label>
+                            @*<span>:کارشناسی ارشد</span>*@   <label> @Html.RadioButtonFor(x => Model.Education, 5, new { @id = "Education5" }) کارشناسی ارشد </label>
+                            @*<span>:دکترا</span>*@           <label> @Html.RadioButtonFor(x => Model.Education, 6, new { @id = "Education16" }) دکترا </label>
+                            <br />
+                            
+                            <br />
+                            <br />
+                            <br />
+                            <span>Country:</span> <br />
+
+                            @Html.DropDownListFor(x => Model.Country , CountryList  )
+
+                            <br />
+                            <input type="submit" />
+
+                        </form>
+                    </div>
+
+                </div>
+                <div id="tabs-2">
+                    <p> odio metus gravida ante, ut pharetra massa metus id nunc. Duis scelerisque molestie turpis. Sed fringilla, massa eget luctus malesuada, metus eros molestie lectus, ut tempus eros massa ut dolor. Aenean aliquet fringilla sem. Suspendisse sed ligula in ligula suscipit aliquam. Praesent in eros vestibulum mi adipiscing adipiscing. Morbi facilisis. Curabitur ornare consequat nunc. Aenean vel metus. Ut posuere viverra nulla. Aliquam erat volutpat. Pellentesque convallis. Maecenas feugiat, tellus pellentesque pretium posuere, felis lorem euismod felis, eu ornare leo nisi vel felis. Mauris consectetur tortor et purus.</p>
+                </div>
+                <div id="tabs-3">
+                    <p>Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate, pede vel vehicula accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem. Vestibulum non ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce sodales. Quisque eu urna vel enim commodo pellentesque. Praesent eu risus hendrerit ligula tempus pretium. Curabitur lorem enim, pretium nec, feugiat nec, luctus a, lacus.</p>
+                    <p>Duis cursus. Maecenas ligula eros, blandit nec, pharetra at, semper at, magna. Nullam ac lacus. Nulla facilisi. Praesent viverra justo vitae neque. Praesent blandit adipiscing velit. Suspendisse potenti. Donec mattis, pede vel pharetra blandit, magna ligula faucibus eros, id euismod lacus dolor eget odio. Nam scelerisque. Donec non libero sed nulla mattis commodo. Ut sagittis. Donec nisi lectus, feugiat porttitor, tempor ac, tempor vitae, pede. Aenean vehicula velit eu tellus interdum rutrum. Maecenas commodo. Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus hendrerit hendrerit.</p>
+                </div>
+            </div>
+        </div>
+
+        <script>
+
+        </script>
+
+        <div id="dialog" title="Basic dialog">
+            <p id="Text2">  </p>
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+        <div id="accordion" class="accordionbody">
+            <h3>لوازم جانبی گوشی</h3>
+            <div>
+                <ul>
+                    <li>کیف و کاور گوشی</li>
+                    <li>پاور بانک (شارژر همراه) </li>
+                    <li> هندزفری، هدفون، هدست </li>
+                    <li>  پایه نگهدارنده گوشی </li>
+                </ul>
+
+            </div>
+            <h3>قسمت دو</h3>
+            <div>
+                <p>
+                    Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet
+                    purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor
+                    velit, faucibus interdum tellus libero ac justo. Vivamus non quam. In
+                    suscipit faucibus urna.
+                </p>
+            </div>
+            <h3>قسمت سوم</h3>
+            <div>
+                <p>
+                    Nam enim risus, molestie et, porta ac, aliquam ac, risus. Quisque lobortis.
+                    Phasellus pellentesque purus in massa. Aenean in pede. Phasellus ac libero
+                    ac tellus pellentesque semper. Sed ac felis. Sed commodo, magna quis
+                    lacinia ornare, quam ante aliquam nisi, eu iaculis leo purus venenatis dui.
+                </p>
+                <ul>
+                    <li>List item one</li>
+                    <li>List item two</li>
+                    <li>List item three</li>
+                </ul>
+            </div>
+            <h3>قسمت چهارم</h3>
+            <div>
+                <p>
+                    Cras dictum. Pellentesque habitant morbi tristique senectus et netus
+                    et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in
+                    faucibus orci luctus et ultrices posuere cubilia Curae; Aenean lacinia
+                    mauris vel est.
+                </p>
+                <p>
+                    Suspendisse eu nisl. Nullam ut libero. Integer dignissim consequat lectus.
+                    Class aptent taciti sociosqu ad litora torquent per conubia nostra, per
+                    inceptos himenaeos.
+                </p>
+            </div>
+
+
+        </div>
+        <button id="btn">نمایش مقادیر ثبت شده</button>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

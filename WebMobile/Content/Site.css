@@ -1,7 +1,9 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    font-family:BNazanin;
 }
+
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
@@ -21,4 +23,11 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+@font-face {
+  font-family: 'BNazanin';
+  src: 
+        url('../fonts/BNaznnBd.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+       url('../fonts/BNaznnBd.ttf') format('truetype');  /* Saf3—5, Chrome4+, FF3.5, Opera 10+ */
 }
